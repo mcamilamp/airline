@@ -3,14 +3,12 @@ package com.example.airline.models;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.GenerationType;
 import java.time.LocalDate;
 import java.time.LocalTime;
-
-import ch.qos.logback.core.util.Duration;
-
+import java.time.Duration;
 
 @Entity 
 @Table(name = "flight")
@@ -37,5 +35,4 @@ public class Flight {
 
     @Column(name = "capacity")
     private int capacity;
-    
 }
