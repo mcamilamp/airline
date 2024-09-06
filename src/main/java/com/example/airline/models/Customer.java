@@ -10,11 +10,12 @@ import jakarta.persistence.GenerationType;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "customers")
 public class Customer implements Serializable {
 
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_customer")
     private Long idCustomer;
 
     @Column(name = "name")

@@ -1,29 +1,32 @@
 package com.example.airline.models;
 
+import java.io.Serializable;
 import java.time.Duration;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "stopover")
+@Table(name = "stopovers")
 public class Stopover {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_stopover")
-    private Long idStopover;
+    @Embeddable
+    public static class StopoverKey implements Serializable {
+        @Column(name = "id_flight")
+        private Long idFlight;
+
+        @Column(name = "id_airport")
+        private Long idAirport;
+    }
+
+    @EmbeddedId
+    private StopoverKey stopoverKey;
 
     @ManyToOne
+    @MapsId("idFlight")
     @JoinColumn(name = "id_flight", nullable = false)
     private Flight flight;
 
     @ManyToOne
+    @MapsId("idAirport")
     @JoinColumn(name = "id_airport", nullable = false)
     private Airport airport;
 
