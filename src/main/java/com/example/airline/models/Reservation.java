@@ -1,30 +1,35 @@
 package com.example.airline.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.io.Serializable;
 import java.time.LocalDate;
 
-
 @Entity
-@Table(name = "reservation")
+@Table(name = "reservations")
 public class Reservation {
+    @Embeddable
+    public static class ReservationKey implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idReservation;
+        @Column(name = "id_customer")
+        private Long customer;
+
+        @Column(name = "id_flight")
+        private Long flight;
+
+    }
+
+    @EmbeddedId
+    private ReservationKey reservationKey;
 
     @ManyToOne
-    @JoinColumn(name = "id_customer", referencedColumnName = "idCustomer")
+    @MapsId("customer")
+    @JoinColumn(name = "id_customer", referencedColumnName = "id_customer")
     private Customer customer;
 
     @ManyToOne
-    @JoinColumn(name = "id_flight", referencedColumnName = "idFlight")
+    @MapsId("flight")
+    @JoinColumn(name = "id_flight", referencedColumnName = "id_flight")
     private Flight flight;
 
     @Column(name = "reservation_date")

@@ -1,28 +1,31 @@
 package com.example.airline.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Duration;
 
 @Entity 
-@Table(name = "flight")
+@Table(name = "flights")
 public class Flight {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_flight")
     private Long idFlight;
 
-    @Column(name = "origin")
-    private String origin;
+    @ManyToOne
+    @JoinColumn(name = "airline", referencedColumnName = "id_airline")
+    private Airline airline;
 
-    @Column(name = "destination")
-    private String destination;
+    @ManyToOne
+    @JoinColumn(name = "origin_id_airport", referencedColumnName = "id_airport")
+    private Airport origin;
+
+    @ManyToOne
+    @JoinColumn(name = "destination_id_airport", referencedColumnName = "id_airport")
+    private Airport destination;
 
     @Column(name = "departure_date")
     private LocalDate departureDate;

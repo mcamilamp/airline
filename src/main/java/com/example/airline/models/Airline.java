@@ -8,11 +8,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "airline")
+@Table(name = "airlines")
 public class Airline {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_airline")
     private Long idAirline;
 
     @Column(name = "name")
