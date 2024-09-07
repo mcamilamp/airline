@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Table(name = "reservations")
@@ -17,6 +18,17 @@ public class Reservation {
         @Column(name = "id_flight")
         private Long flight;
 
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof ReservationKey that)) return false;
+            return Objects.equals(customer, that.customer) && Objects.equals(flight, that.flight);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(customer, flight);
+        }
     }
 
     @EmbeddedId

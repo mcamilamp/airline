@@ -2,6 +2,7 @@ package com.example.airline.models;
 
 import java.io.Serializable;
 import java.time.Duration;
+import java.util.Objects;
 
 import jakarta.persistence.*;
 
@@ -15,6 +16,18 @@ public class Stopover {
 
         @Column(name = "id_airport")
         private Long idAirport;
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof StopoverKey that)) return false;
+            return Objects.equals(idFlight, that.idFlight) && Objects.equals(idAirport, that.idAirport);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(idFlight, idAirport);
+        }
     }
 
     @EmbeddedId
