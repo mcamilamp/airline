@@ -1,4 +1,4 @@
-package com.example.airline.services;
+package com.example.airline.services.servicesImplements;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.airline.models.Customer;
 import com.example.airline.repositories.CustomerRepository;
+import com.example.airline.services.CustomerService;
 
 @Service
 public class CustomerServiceImp implements CustomerService {
