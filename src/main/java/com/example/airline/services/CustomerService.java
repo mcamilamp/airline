@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface CustomerService {
     List<Customer> findAll();
     Optional<Customer> findCustomerById(Long id);
-    List<Customer>findCustomerByName(String name);
+    List<Customer> findCustomerByName(String name);
     Customer createCustomer(Customer customer);
     Optional<Customer> updateCustomer(Long id, Customer newCustomer);
     void deleteCustomer(Long id);
