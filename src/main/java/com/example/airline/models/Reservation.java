@@ -38,4 +38,46 @@ public class Reservation {
     @Column(name = "number_of_passengers")
     private int numberOfPassengers;
 
+    // GETTERS AND SETTERS
+    
+    public ReservationKey getReservationKey() {
+        return reservationKey;
+    }
+
+    public void setReservationKey(ReservationKey reservationKey) {
+        this.reservationKey = reservationKey;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
+    }
+
+    public LocalDate getReservationDate() {
+        return reservationDate;
+    }
+
+    public void setReservationDate(LocalDate reservationDate) {
+        this.reservationDate = reservationDate;
+    }
+
+    public int getNumberOfPassengers() {
+        return numberOfPassengers;
+    }
+
+    public void setNumberOfPassengers(int numberOfPassengers) {
+        this.numberOfPassengers = numberOfPassengers;
+    }
+
 }
