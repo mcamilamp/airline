@@ -46,5 +46,37 @@ public class Stopover {
     @Column(name = "stopover_time")
     private Duration stopoverTime;
 
-    // Getters and setters
+    // GETTERS AND SETTERS
+
+    public StopoverKey getStopoverKey() {
+        return stopoverKey;
+    }
+
+    public void setStopoverKey(StopoverKey stopoverKey) {
+        this.stopoverKey = stopoverKey;
+    }
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
+    }
+
+    public Airport getAirport() {
+        return airport;
+    }
+
+    public void setAirport(Airport airport) {
+        this.airport = airport;
+    }
+
+    public Duration getStopoverTime() {
+        return stopoverTime;
+    }
+
+    public void setStopoverTime(Duration stopoverTime) {
+        this.stopoverTime = stopoverTime;
+    }
 }

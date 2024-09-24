@@ -38,4 +38,72 @@ public class Flight {
 
     @Column(name = "capacity")
     private int capacity;
+
+    // GETTERS AND SETTERS
+
+    public Long getIdFlight() {
+        return idFlight;
+    }
+
+    public void setIdFlight(Long idFlight) {
+        this.idFlight = idFlight;
+    }
+
+    public Airline getAirline() {
+        return airline;
+    }
+
+    public void setAirline(Airline airline) {
+        this.airline = airline;
+    }
+
+    public Airport getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(Airport origin) {
+        this.origin = origin;
+    }
+
+    public Airport getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Airport destination) {
+        this.destination = destination;
+    }
+
+    public LocalDate getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(LocalDate departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    public LocalTime getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(LocalTime departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    
 }

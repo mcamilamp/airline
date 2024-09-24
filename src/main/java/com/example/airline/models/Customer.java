@@ -33,4 +33,54 @@ public class Customer implements Serializable {
     @Column(name = "email")
     private String email;
 
+    // GETTERS AND SETTERS
+
+    public Long getIdCustomer() {
+        return idCustomer;
+    }
+
+    public void setIdCustomer(Long idCustomer) {
+        this.idCustomer = idCustomer;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }
