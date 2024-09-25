@@ -1,0 +1,32 @@
+---
+
+networks:
+  my-network:
+    driver: bridge
+services:
+  postgres:
+    image: postgres:12
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    volumes:
+      - ./run/postgres/data:/var/lib/postgresql/data
+    networks:
+      - my-network
+
+  rest-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: airline-rest-api
+    volumes:
+      - ./run/rest-api:/app
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+    networks:
+      - my-network
