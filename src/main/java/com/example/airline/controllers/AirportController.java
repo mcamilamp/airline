@@ -19,7 +19,7 @@ public class AirportController {
         this.airportService = airportService;
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<Airport>> findAll() {
         return ResponseEntity.ok(airportService.findAll());
     }
