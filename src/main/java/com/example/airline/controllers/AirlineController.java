@@ -18,7 +18,7 @@ public class AirlineController {
         this.airlineService = airlineService;
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<Airline>> findAll() {
         return ResponseEntity.ok(airlineService.findAll());
     }
