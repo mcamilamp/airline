@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/flights")
@@ -27,6 +28,10 @@ public class FlightController {
         return ResponseEntity.ok(flightService.findAll());
     }
 
+    @PostMapping
+    public ResponseEntity<Flight> createFlight(@RequestBody Flight flight) {
+        return ResponseEntity.ok(flightService.createFlight(flight));
+    }
     @GetMapping("/find/id/{id}")
     public ResponseEntity<Flight> findFlightById(@PathVariable long id) {
         return ResponseEntity.ok(flightService.findFlightById(id).orElse(null));
