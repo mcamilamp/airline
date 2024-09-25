@@ -28,10 +28,6 @@ public class FlightController {
         return ResponseEntity.ok(flightService.findAll());
     }
 
-    @PostMapping
-    public ResponseEntity<Flight> createFlight(@RequestBody Flight flight) {
-        return ResponseEntity.ok(flightService.createFlight(flight));
-    }
     @GetMapping("/find/id/{id}")
     public ResponseEntity<Flight> findFlightById(@PathVariable long id) {
         return ResponseEntity.ok(flightService.findFlightById(id).orElse(null));
