@@ -3,16 +3,17 @@ package com.example.airline.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.airline.models.Stopover;
 import org.springframework.stereotype.Service;
 
-import com.example.airline.models.Stopover;
+import com.example.airline.dto.StopoverDTO;
 
 @Service
 public interface StopoverService {
-    List<Stopover> findAll();
-    Optional<Stopover> findStopoverById(Long id);
-    Stopover createStopover(Stopover stopover);
-    Optional<Stopover> updateStopover(Long id, Stopover newStopover);
-    void deleteStopover(Long id);
+    List<StopoverDTO> findAll();
+    Optional<StopoverDTO> findStopoverById(Stopover.StopoverKey id);
+    StopoverDTO createStopover(StopoverDTO stopover);
+    Optional<StopoverDTO> updateStopover(Stopover.StopoverKey id, StopoverDTO newStopover);
+    void deleteStopover(Stopover.StopoverKey id);
     
 }

@@ -1,8 +1,10 @@
 package com.example.airline.controllers;
 
+import com.example.airline.dto.ReservationDTO;
 import com.example.airline.models.Reservation;
 import com.example.airline.services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,32 +21,32 @@ public class ReservationController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Reservation>> findAll() {
+    public ResponseEntity<List<ReservationDTO>> findAll() {
         return ResponseEntity.ok(reservationService.findAll());
     }
 
-    @GetMapping("/find/id/{id}")
-    public ResponseEntity<Reservation> findReservationById(@PathVariable long id) {
-        return reservationService.findReservationById(id)
+    @GetMapping("/customer/{customerId}/flight/{flightId}")
+    public ResponseEntity<ReservationDTO> findReservationById(@PathVariable Long customerId, @PathVariable Long flightId) {
+        return reservationService.findReservationById(new Reservation.ReservationKey(customerId, flightId))
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<Reservation> createReservation(@RequestBody Reservation reservation) {
-        return ResponseEntity.ok(reservationService.createReservation(reservation));
+    public ResponseEntity<ReservationDTO> createReservation(@RequestBody ReservationDTO reservation) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(reservationService.createReservation(reservation));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Reservation> updateReservation(@PathVariable long id, @RequestBody Reservation newReservation) {
-        return reservationService.updateReservation(id, newReservation)
+    @PutMapping("/customer/{customerId}/flight/{flightId}")
+    public ResponseEntity<ReservationDTO> updateReservation(@PathVariable Long customerId, @PathVariable Long flightId, @RequestBody ReservationDTO newReservation) {
+        return reservationService.updateReservation(new Reservation.ReservationKey(customerId, flightId), newReservation)
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> cancelReservation(@PathVariable long id) {
-        reservationService.deleteReservation(id);
+    @DeleteMapping("/customer/{customerId}/flight/{flightId}")
+    public ResponseEntity<Void> cancelReservation(@PathVariable Long customerId, @PathVariable Long flightId) {
+        reservationService.deleteReservation(new Reservation.ReservationKey(customerId, flightId));
         return ResponseEntity.noContent().build();
     }
 }

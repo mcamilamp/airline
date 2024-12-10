@@ -3,16 +3,17 @@ package com.example.airline.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.airline.models.Reservation;
 import org.springframework.stereotype.Service;
 
-import com.example.airline.models.Reservation;
+import com.example.airline.dto.ReservationDTO;
 
 @Service
 
 public interface ReservationService {
-    List<Reservation> findAll();
-    Optional<Reservation> findReservationById(Long id);
-    Reservation createReservation(Reservation reservation);
-    Optional<Reservation> updateReservation(Long id, Reservation newReservation);
-    void deleteReservation(Long id);
+    List<ReservationDTO> findAll();
+    Optional<ReservationDTO> findReservationById(Reservation.ReservationKey id);
+    ReservationDTO createReservation(ReservationDTO reservation);
+    Optional<ReservationDTO> updateReservation(Reservation.ReservationKey id, ReservationDTO newReservation);
+    void deleteReservation(Reservation.ReservationKey id);
 }
